@@ -48,7 +48,7 @@ public class LoginTests extends TestBase {
     @Test
     public void loginSuccessModel() {
         app.getHelperUser().openLoginForm();
-        app.getHelperUser().fillLoginForm("marga@gmail.com", "Mmar123456$");
+        app.getHelperUser().fillLoginForm("elena.krylataya@gmail.com", "Lenakira11$");
         app.getHelperUser().submitLogin();
         //Assert if element with text "Logged in success" is present
         Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
@@ -58,17 +58,30 @@ public class LoginTests extends TestBase {
 
     @Test
     public void loginWrongEmail(){
+        app.getHelperUser().openLoginForm();
+        app.getHelperUser().fillLoginForm("elena.krylatayagmail.com", "Lenakira11$");
+        app.getHelperUser().submitLogin();
+       Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password"));
+
+
 
     }
 
     @Test
     public void loginWrongPassword(){
+        app.getHelperUser().openLoginForm();
+        app.getHelperUser().fillLoginForm("elena.krylataya@gmail.com", "Lenakira1");
+        app.getHelperUser().submitLogin();
+       Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password"));
+
 
     }
 
 
     @AfterMethod
     public void postCondition() {
+
         app.getHelperUser().clickOKButton();
+       // Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password"));
     }
 }
