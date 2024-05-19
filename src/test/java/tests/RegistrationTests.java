@@ -46,4 +46,5 @@ public class RegistrationTests extends TestBase {
     public void postCondition() {
         app.getHelperUser().clickOKButton();
     }
+    
 }
