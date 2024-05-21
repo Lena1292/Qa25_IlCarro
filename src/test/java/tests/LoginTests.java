@@ -19,7 +19,7 @@ public class LoginTests extends TestBase {
     @Test
     public void loginSuccess() {
         app.getHelperUser().openLoginForm();
-        app.getHelperUser().fillLoginForm("elena.krylataya@gmail.com", "Lenakira11$");
+        app.getHelperUser().fillLoginForm("marga@gmail.com", "Mmar123456$");
         app.getHelperUser().submit();
         //Assert if element with text "Logged in success" is present
         Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
@@ -29,12 +29,12 @@ public class LoginTests extends TestBase {
 
     @Test
     public void loginSuccess1() {
-        User user = new User().setEmail("elena.krylataya@gmail.com").setPassword("Lenakira11$");
+        User user = new User().setEmail("marga@gmail.com").setPassword("Mmar123456$");
 //        User user1 = new User();
 //        user1.setEmail().setPassword().setFirstName();
 
-//        user.setEmail("elena.krylataya@gmail.com");
-//        user.setPassword("Lenakira11$");
+//        user.setEmail("marga@gmail.com");
+//        user.setPassword("Mmar123456$");
 
         app.getHelperUser().openLoginForm();
         app.getHelperUser().fillLoginForm(user);
@@ -48,7 +48,7 @@ public class LoginTests extends TestBase {
     @Test
     public void loginSuccessModel() {
         app.getHelperUser().openLoginForm();
-        app.getHelperUser().fillLoginForm("elena.krylataya@gmail.com", "Lenakira11$");
+        app.getHelperUser().fillLoginForm("marga@gmail.com", "Mmar123456$");
         app.getHelperUser().submit();
         //Assert if element with text "Logged in success" is present
         Assert.assertEquals(app.getHelperUser().getMessage(), "Logged in success");
@@ -84,11 +84,8 @@ public class LoginTests extends TestBase {
     }
 
 
-
     @AfterMethod
     public void postCondition() {
-
         app.getHelperUser().clickOKButton();
-
     }
 }
