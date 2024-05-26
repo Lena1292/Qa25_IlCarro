@@ -16,6 +16,7 @@ public class AddNewCarTests extends TestBase{
         if (!app.getHelperUser().isLogged()){
             app.getHelperUser().login(new User()
                     .setEmail("margo@gmail.com").setPassword("Mmar123456$"));
+
         }
 
     }
