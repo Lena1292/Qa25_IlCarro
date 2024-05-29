@@ -38,6 +38,7 @@ public class AddNewCarTests extends TestBase{
         app.getHelperCar().openCarForm();
         app.getHelperCar().fillCarForm(car);
         app.getHelperCar().attachPhoto("C:\\Qa25\\Qa25_IlCarro\\imgpsh_fullsize_anim.jpg");
+        app.getHelperCar().getScreen("src/test/screenshots/screen-"+i+".png");
         app.getHelperCar().submit();
         Assert.assertTrue(app.getHelperCar().getMessage().contains("added successful"));
         Assert.assertEquals(app.getHelperCar().getMessage(),car
