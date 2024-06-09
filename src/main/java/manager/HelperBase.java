@@ -18,17 +18,17 @@ public class HelperBase {
     }
 
 
-    public void type(By locator, String text){
+    public void type(By locator, String text) {
         WebElement element = wd.findElement(locator);
         element.click();
         element.clear();
         clearNew(element);
-        if(text!=null){
+        if (text != null) {
             element.sendKeys(text);
         }
     }
 
-    public void clearNew(WebElement element){
+    public void clearNew(WebElement element) {
         element.sendKeys(" ");
         element.sendKeys(Keys.BACK_SPACE);
 
@@ -48,7 +48,7 @@ public class HelperBase {
         click(By.xpath("//button[@type='submit']"));
     }
 
-    public void pause(int time){
+    public void pause(int time) {
         try {
             Thread.sleep(time);
         } catch (InterruptedException e) {
@@ -57,16 +57,28 @@ public class HelperBase {
     }
 
     public boolean isElementPresent(By locator) {
-        return wd.findElements(locator).size()>0;
+        return wd.findElements(locator).size() > 0;
     }
 
     public void getScreen(String link) {
         TakesScreenshot takesScreenshot = (TakesScreenshot) wd;
-        File tmp  = takesScreenshot.getScreenshotAs(OutputType.FILE);
+        File tmp = takesScreenshot.getScreenshotAs(OutputType.FILE);
         try {
-            Files.copy(tmp,new File(link));
+            Files.copy(tmp, new File(link));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void clearTextBox(By locator) {
+        WebElement element = wd.findElement(locator);
+        String os = System.getProperty("os.name");
+        if (os.startsWith("Win")) {
+            element.sendKeys(Keys.CONTROL, "a");
+        } else {
+            element.sendKeys(Keys.COMMAND, "a");
+        }
+        element.sendKeys(Keys.DELETE);
+
     }
 }
